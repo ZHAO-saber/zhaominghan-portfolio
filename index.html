@@ -51,7 +51,7 @@ a{color:inherit;text-decoration:none}button{font-family:inherit;cursor:pointer;b
 .nav-menu-btn.active span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
 .nav-menu-btn.active span:nth-child(2){opacity:0}
 .nav-menu-btn.active span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}
-.hero{position:relative;min-height:100dvh;display:flex;align-items:center;justify-content:center;overflow:hidden;background:url("assets/hero-bg.jpg") center/cover no-repeat}
+.hero{position:relative;min-height:100dvh;display:flex;align-items:center;justify-content:center;overflow:hidden;background:url("assets/hero-bg.jpg") center/cover no-repeat}.hero-orb{position:absolute;border-radius:50%;filter:blur(80px);pointer-events:none;animation:orbFloat 8s ease-in-out infinite}.hero-orb-1{width:500px;height:500px;background:radial-gradient(circle,rgba(79,142,247,.25) 0%,transparent 70%);top:-10%;left:-10%;animation-delay:0s}.hero-orb-2{width:400px;height:400px;background:radial-gradient(circle,rgba(139,92,246,.2) 0%,transparent 70%);bottom:-5%;right:-5%;animation-delay:-4s}.hero-orb-3{width:300px;height:300px;background:radial-gradient(circle,rgba(79,142,247,.15) 0%,transparent 70%);top:40%;left:60%;animation-delay:-2s}@keyframes orbFloat{0%,100%{transform:translate(0,0) scale(1)}25%{transform:translate(30px,-20px) scale(1.05)}50%{transform:translate(-20px,30px) scale(.95)}75%{transform:translate(-30px,-10px) scale(1.02)}}
 #hero-canvas{position:absolute;inset:0;z-index:0;width:100%;height:100%}
 .hero::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 50% 50%,var(--glow-blue) 0%,transparent 60%);z-index:1;pointer-events:none}
 .hero-content{position:relative;z-index:3;text-align:center;max-width:800px;padding:0 var(--space-md)}
@@ -81,7 +81,7 @@ a{color:inherit;text-decoration:none}button{font-family:inherit;cursor:pointer;b
 .radar-container{display:flex;justify-content:center;align-items:center}
 .radar-chart{width:280px;height:280px}
 .radar-chart polygon.radar-bg{fill:none;stroke:var(--glass-border);stroke-width:1}
-.radar-chart polygon.radar-area{fill:rgba(79,142,247,.15);stroke:var(--accent-blue);stroke-width:2}
+.radar-chart polygon.radar-area{fill:rgba(79,142,247,.15);stroke:var(--accent-blue);stroke-width:2}[data-theme="light"] .radar-chart polygon.radar-area{fill:rgba(37,99,235,.12);stroke:var(--accent-blue);stroke-width:2}
 .radar-chart circle.radar-dot{fill:var(--accent-violet);stroke:var(--bg-deep);stroke-width:2}
 .radar-label{font-family:var(--font-body);font-size:11px;fill:var(--text-muted);font-weight:500}.radar-line{stroke:var(--glass-border);stroke-width:1}
 .portfolio-filters{display:flex;justify-content:center;gap:var(--space-xs);margin-bottom:var(--space-lg);flex-wrap:wrap}
@@ -174,9 +174,9 @@ a{color:inherit;text-decoration:none}button{font-family:inherit;cursor:pointer;b
 .footer{padding:var(--space-lg) var(--space-md);text-align:center;color:var(--text-muted);font-size:.875rem;border-top:1px solid var(--glass-border);margin-top:var(--space-xl)}
 @media(max-width:1023px){.about-grid,.contact-grid{grid-template-columns:1fr}.tools-grid{grid-template-columns:repeat(2,1fr)}.timeline-item{grid-template-columns:1fr;gap:var(--space-sm)}.timeline-item::before{left:0}.timeline-item:nth-child(odd) .timeline-content,.timeline-item:nth-child(even) .timeline-content{grid-column:1;text-align:left;padding-left:var(--space-md);padding-right:0}.timeline-item:nth-child(odd) .timeline-spacer,.timeline-item:nth-child(even) .timeline-spacer{display:none}.timeline::before{left:0}}
 @media(max-width:767px){.nav-links{display:none}.nav-menu-btn{display:flex}.nav-links.open{display:flex;flex-direction:column;position:fixed;inset:0;background:rgba(10,14,26,.95);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);justify-content:center;align-items:center;gap:var(--space-md);z-index:999}.nav-links.open a{font-size:1.25rem}.tools-grid{grid-template-columns:1fr}.portfolio-grid,.blog-grid{grid-template-columns:1fr}.hero-title{font-size:clamp(2rem,8vw,2.5rem)}}
-</style>
+.blog-modal{position:fixed;inset:0;z-index:2000;display:none;align-items:center;justify-content:center;padding:1rem}.blog-modal.open{display:flex}.blog-modal-backdrop{position:absolute;inset:0;background:rgba(6,10,20,.88);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);cursor:pointer}.blog-modal-content{position:relative;max-width:720px;width:100%;max-height:85vh;overflow-y:auto;border-radius:var(--radius-lg);padding:2.5rem 3rem;background:var(--bg-secondary);border:1px solid var(--glass-border);box-shadow:0 32px 80px rgba(0,0,0,.6),0 0 60px var(--glow-violet)}.blog-modal-close{position:absolute;top:1rem;right:1rem;width:36px;height:36px;border-radius:50%;background:var(--glass-bg);border:1px solid var(--glass-border);display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--text-muted);font-size:1.2rem;transition:all var(--transition-fast)}.blog-modal-close:hover{border-color:var(--accent-violet);color:var(--accent-violet);transform:rotate(90deg)}.blog-modal-date{font-family:var(--font-code);font-size:.8rem;color:var(--accent-blue);margin-bottom:.75rem;letter-spacing:.05em}.blog-modal-title{font-family:var(--font-display);font-size:1.6rem;font-weight:700;margin-bottom:1.5rem;line-height:1.3;color:var(--text-primary)}.blog-modal-body{color:var(--text-secondary);line-height:1.9;font-size:.95rem}.blog-modal-body p{margin-bottom:1rem}@media(max-width:767px){.blog-modal-content{padding:1.5rem 1.25rem}.blog-modal-title{font-size:1.25rem}}.grain-overlay{position:fixed;inset:0;z-index:9998;pointer-events:none;opacity:.035;background-image:url("data:image/svg+xml,%3Csvg viewBox=%270 0 200 200%27 xmlns=%27http://www.w3.org/2000/svg%27%3E%3Cfilter id=%27n%27%3E%3CfeTurbulence type=%27fractalNoise%27 baseFrequency=%270.85%27 numOctaves=%273%27 stitchTiles=%27stitch%27/%3E%3C/filter%3E%3Crect width=%27100%25%27 height=%27100%25%27 filter=%27url(%23n)%27/%3E%3C/svg%3E");background-size:128px 128px}</style>
 </head>
-<body><div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div><button class="back-to-top" id="backToTop" aria-label="返回顶部"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg></button><nav class="nav" id="nav" role="navigation" aria-label="主导航">
+<body><div class="grain-overlay" aria-hidden="true"></div><div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div><button class="back-to-top" id="backToTop" aria-label="返回顶部"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg></button><nav class="nav" id="nav" role="navigation" aria-label="主导航">
   <div class="nav-inner glass-strong">
     <a href="#hero" class="nav-logo" aria-label="首页">ZHAO</a>
     <div class="nav-links" id="navLinks" role="menubar">
@@ -195,7 +195,8 @@ a{color:inherit;text-decoration:none}button{font-family:inherit;cursor:pointer;b
   </div>
 </nav>
 <section class="hero" id="hero" aria-label="首屏">
-  <canvas id="hero-canvas" aria-hidden="true"></canvas>
+  <div class="hero-orb hero-orb-1" aria-hidden="true"></div><div class="hero-orb hero-orb-2" aria-hidden="true"></div><div class="hero-orb hero-orb-3" aria-hidden="true"></div>
+      <canvas id="hero-canvas" aria-hidden="true"></canvas>
   <div class="hero-content">
     <div class="hero-badge">开放合作中</div>
     <h1 class="hero-title">你好，我是<br><span class="gradient-text" id="typewriter"></span><span class="cursor" aria-hidden="true">|</span></h1>
@@ -238,7 +239,7 @@ a{color:inherit;text-decoration:none}button{font-family:inherit;cursor:pointer;b
         <line class="radar-line" x1="140" y1="140" x2="140" y2="250" stroke-width="1"/>
         <line class="radar-line" x1="140" y1="140" x2="46" y2="195" stroke-width="1"/>
         <line class="radar-line" x1="140" y1="140" x2="46" y2="85" stroke-width="1"/>
-        <circle cx="140" cy="140" r="3" fill="var(--accent-violet)" opacity=".6"/>
+        
       </svg>
     </div>
   </div>
@@ -281,9 +282,9 @@ a{color:inherit;text-decoration:none}button{font-family:inherit;cursor:pointer;b
 <section class="section" id="blog" aria-labelledby="blog-title">
   <div class="section-header reveal"><p class="section-label">// 博客</p><h2 class="section-title" id="blog-title">思考与记录</h2><p class="section-desc">技术笔记、项目复盘与行业观察</p></div>
   <div class="blog-grid reveal">
-    <article class="blog-card glass"><p class="blog-date">2026.08.15</p><h3 class="blog-title">深入理解 CSS 容器查询：响应式设计的未来</h3><p class="blog-excerpt">CSS 容器查询让组件能够根据父容器尺寸而非视口尺寸做出响应式调整，标志着响应式设计从页面级走向组件级的范式转变。</p></article>
-    <article class="blog-card glass"><p class="blog-date">2026.07.22</p><h3 class="blog-title">WebAssembly 在浏览器端的实战探索</h3><p class="blog-excerpt">当 JavaScript 遇上 WebAssembly，性能瓶颈有了新解法。本文分享将图像处理算法迁移至 Wasm 的实践与踩坑记录。</p></article>
-    <article class="blog-card glass"><p class="blog-date">2026.06.10</p><h3 class="blog-title">设计系统的构建哲学：从 0 到 1 的决策过程</h3><p class="blog-excerpt">一个好的设计系统不是组件堆砌，而是设计语言的一致表达。分享我在构建组件库时的核心决策框架与取舍原则。</p></article>
+    <article class="blog-card glass" onclick="openBlogModal(0)" role="button" tabindex="0" onkeydown="if(event.key==='Enter')openBlogModal(0)"><p class="blog-date">2026.08.15</p><h3 class="blog-title">深入理解 CSS 容器查询：响应式设计的未来</h3><p class="blog-excerpt">CSS 容器查询让组件能够根据父容器尺寸而非视口尺寸做出响应式调整，标志着响应式设计从页面级走向组件级的范式转变。</p></article>
+    <article class="blog-card glass" onclick="openBlogModal(1)" role="button" tabindex="0" onkeydown="if(event.key==='Enter')openBlogModal(1)"><p class="blog-date">2026.07.22</p><h3 class="blog-title">WebAssembly 在浏览器端的实战探索</h3><p class="blog-excerpt">当 JavaScript 遇上 WebAssembly，性能瓶颈有了新解法。本文分享将图像处理算法迁移至 Wasm 的实践与踩坑记录。</p></article>
+    <article class="blog-card glass" onclick="openBlogModal(2)" role="button" tabindex="0" onkeydown="if(event.key==='Enter')openBlogModal(2)"><p class="blog-date">2026.06.10</p><h3 class="blog-title">设计系统的构建哲学：从 0 到 1 的决策过程</h3><p class="blog-excerpt">一个好的设计系统不是组件堆砌，而是设计语言的一致表达。分享我在构建组件库时的核心决策框架与取舍原则。</p></article>
   </div>
 </section>
 <section class="section" id="timeline" aria-labelledby="timeline-title">
@@ -449,9 +450,25 @@ if(bar){window.addEventListener('scroll',function(){var pct=(document.documentEl
 if(btn){window.addEventListener('scroll',function(){btn.classList.toggle('visible',window.scrollY>400);},{passive:true});btn.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'});});}
 })()
 // IMAGE FALLBACK
-document.querySelectorAll('.project-thumb img').forEach(function(img){img.addEventListener('error',function(){this.style.opacity='0';this.parentElement.style.background='linear-gradient(135deg,rgba(79,142,247,.3),rgba(139,92,246,.3))';});});</script>
-</body>
+document.querySelectorAll('.project-thumb img').forEach(function(img){img.addEventListener('error',function(){this.style.opacity='0';this.parentElement.style.background='linear-gradient(135deg,rgba(79,142,247,.3),rgba(139,92,246,.3))';});});
+
+// BLOG MODAL
+const blogPosts=[{date:"2026.08.15",title:"深入理解 CSS 容器查询：响应式设计的未来",body:"<p>CSS 容器查询（Container Queries）是 Web 响应式设计领域近年的重大突破。与传统媒体查询依赖视口尺寸不同，容器查询让组件能够根据父容器的尺寸自动调整布局，真正实现组件自治。</p><p>在船舶工程数据可视化项目中，我曾面临一个典型场景：同一个应力分布图表需要在仪表盘大屏、笔记本屏幕和手机等不同容器中展示。过去只能写多套样式，现在借助容器查询，一套组件即可自适应所有场景。</p><p>容器查询的语法与媒体查询高度相似，只需将 @media 替换为 @container 并指定容器查询上下文即可。搭配 container-type 属性，可以精确控制触发条件。</p>"},{date:"2026.07.22",title:"WebAssembly 在浏览器端的实战探索",body:"<p>WebAssembly（Wasm）为浏览器端高性能计算开辟了新路径。将计算密集型算法从 JavaScript 迁移至 Wasm，在图像处理、数值仿真等场景下可获得 5-10 倍的性能提升。</p><p>在船舶结构力学仿真项目中，我将有限元分析的核心求解器用 Rust 重写并编译为 Wasm，使浏览器端仿真从 12 秒降至 1.8 秒。同时通过 Emscripten 的内存共享机制，实现了 JS 与 Wasm 之间的高效数据传递。</p><p>当然 Wasm 并非银弹——模块体积、调试难度、以及部分 API 的浏览器兼容性仍需权衡。但在合适的场景下，它是突破 JS 性能天花板的利器。</p>"},{date:"2026.06.10",title:"设计系统的构建哲学：从 0 到 1 的决策过程",body:"<p>设计系统（Design System）不是组件库的简单堆砌，而是一套完整的设计语言体系。它承载着产品的视觉基因，影响着每一个像素的决策。</p><p>在构建个人作品集的设计系统时，我首先明确了三个核心原则：深空科技风的美学定位、玻璃拟态的视觉语言、以及无障碍的对比度标准。基于此，我定义了色彩系统（主色、辅助色、中性色）、字体阶梯（Display/Body/Mono 三类字体）、间距比例（4px 基准网格）和动效节奏。</p><p>好的设计系统是克制而一致的——每一个决策都有据可查，每一个变体都服务于整体叙事。这也是我从零构建这套系统时最深刻的体会。</p>"}];
+function openBlogModal(idx){const post=blogPosts[idx];if(!post)return;document.getElementById('modalDate').textContent=post.date;document.getElementById('modalTitle').textContent=post.title;document.getElementById('modalBody').innerHTML=post.body;document.getElementById('blogModal').classList.add('open');document.body.style.overflow='hidden';}
+function closeBlogModal(){document.getElementById('blogModal').classList.remove('open');document.body.style.overflow='';}
+document.getElementById('blogModalClose').addEventListener('click',closeBlogModal);
+document.getElementById('blogModalBackdrop').addEventListener('click',closeBlogModal);
+document.addEventListener('keydown',function(e){if(e.key==='Escape')closeBlogModal();});
+document.querySelectorAll('.blog-card[onclick]').forEach(function(card){card.addEventListener('keydown',function(e){if(e.key==='Enter'){const m=this.getAttribute('onclick').match(/openBlogModal\((\d+)\)/);if(m)openBlogModal(parseInt(m[1]));}});});
+// RADAR THEME SYNC
+(function(){var rA=document.getElementById('radarArea');if(!rA)return;
+function syncColors(){var d=htmlEl.getAttribute('data-theme')==='dark';rA.style.fill=d?'rgba(79,142,247,.15)':'rgba(37,99,235,.12)';document.querySelectorAll('.radar-dot').forEach(function(dot){dot.style.fill=d?'var(--accent-violet)':'var(--accent-blue)';dot.style.stroke=d?'var(--bg-deep)':'var(--bg-secondary)';});}
+new MutationObserver(function(){syncColors();}).observe(htmlEl,{attributes:true,attributeFilter:['data-theme']});syncColors();})();
+
+</script>
+<div class="blog-modal" id="blogModal"><div class="blog-modal-backdrop" id="blogModalBackdrop"></div><div class="blog-modal-content glass-strong"><button class="blog-modal-close" id="blogModalClose" aria-label="关闭">&times;</button><p class="blog-modal-date" id="modalDate"></p><h2 class="blog-modal-title" id="modalTitle"></h2><div class="blog-modal-body" id="modalBody"></div></div></div></body>
 </html>
+
 
 
 
