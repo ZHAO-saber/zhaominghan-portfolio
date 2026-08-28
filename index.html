@@ -83,7 +83,7 @@ a{color:inherit;text-decoration:none}button{font-family:inherit;cursor:pointer;b
 .radar-chart{width:280px;height:280px;transform:rotateX(8deg);transition:transform .6s cubic-bezier(.2,.8,.2,1);filter:drop-shadow(0 12px 24px rgba(0,0,0,.4))}
 .radar-container:hover .radar-chart{transform:rotateX(2deg) rotateY(4deg)}
 .radar-dot{transition:all .3s ease;cursor:crosshair}
-.radar-dot:hover{r:7;filter:brightness(1.4) drop-shadow(0 0 6px currentColor)}
+.radar-dot:hover{transform:scale(1.5);filter:brightness(1.4) drop-shadow(0 0 8px var(--accent-violet))}
 .radar-chart{width:280px;height:280px}
 .radar-chart polygon.radar-bg{fill:none;stroke:var(--glass-border);stroke-width:1}
 .radar-chart polygon.radar-area{fill:rgba(79,142,247,.15);stroke:var(--accent-blue);stroke-width:2}[data-theme="light"] .radar-chart polygon.radar-area{fill:rgba(37,99,235,.12);stroke:var(--accent-blue);stroke-width:2}
@@ -126,7 +126,7 @@ a{color:inherit;text-decoration:none}button{font-family:inherit;cursor:pointer;b
 .timeline{position:relative;padding:var(--space-md) 0}
 .timeline::before{content:"";position:absolute;left:50%;transform:translateX(-50%);top:0;bottom:0;width:2px;background:linear-gradient(to bottom,transparent,var(--accent-blue),var(--accent-violet),transparent)}
 .timeline-item{display:grid;grid-template-columns:1fr 1fr;gap:var(--space-lg);margin-bottom:var(--space-lg);position:relative}
-.timeline-item::before{content:"";position:absolute;left:50%;top:1.5rem;transform:translateX(-50%);width:12px;height:12px;background:var(--accent-gradient);border-radius:50%;box-shadow:0 0 20px var(--glow-blue);z-index:1}
+.timeline-item::before{content:"";position:absolute;left:50%;top:1.5rem;transform:translateX(-50%);width:12px;height:12px;background:var(--accent-gradient);border-radius:50%;box-shadow:0 0 20px var(--glow-blue),0 0 40px var(--glow-violet);z-index:1}
 .timeline-item:nth-child(odd) .timeline-content{grid-column:1;text-align:right;padding-right:var(--space-md)}
 .timeline-item:nth-child(odd) .timeline-spacer{grid-column:2}
 .timeline-item:nth-child(even) .timeline-content{grid-column:2;text-align:left;padding-left:var(--space-md)}
@@ -225,12 +225,12 @@ a{color:inherit;text-decoration:none}button{font-family:inherit;cursor:pointer;b
 <section class="section" id="about" aria-labelledby="about-title">
   <div class="section-header reveal"><p class="section-label">// 关于我</p><h2 class="section-title" id="about-title">探索 · 创造 · 成长</h2><p class="section-desc">热爱技术，追求卓越，用代码构建有意义的产品</p></div>
   <div class="about-grid">
-    <div class="about-text reveal">
+    <div class="about-text reveal reveal-delay-1">
       <p><strong>赵茗涵</strong>，武汉理工大学船舶与海洋工程专业本科在读。核心研究方向为船舶结构力学与破损稳性，同时对前端开发、科创竞赛和AI工具应用有浓厚兴趣。</p>
       <p>作为跨领域学习者，我致力于将工程思维与技术开发相结合。在学术研究之余，持续探索Web前端、数据可视化和自动化工具开发，参与多个科创项目与竞赛。</p>
       <p>相信技术的力量可以改变世界，也相信好的设计可以让技术更有温度。目前正在构建个人数字门户，记录成长轨迹，展示学习与实践成果。</p>
     </div>
-    <div class="radar-container reveal">
+    <div class="radar-container reveal reveal-delay-2">
       <svg class="radar-chart" viewBox="0 0 280 280" aria-label="技能雷达图">
         <polygon class="radar-bg" points="140,30 234,85 234,195 140,250 46,195 46,85"/>
         <polygon class="radar-bg" points="140,55 213,98 213,182 140,225 67,182 67,98"/>
@@ -260,7 +260,7 @@ a{color:inherit;text-decoration:none}button{font-family:inherit;cursor:pointer;b
   </div>
 </section><section class="section" id="portfolio" aria-labelledby="portfolio-title">
   <div class="section-header reveal"><p class="section-label">// 作品集</p><h2 class="section-title" id="portfolio-title">项目展示</h2><p class="section-desc">跨领域综合展示，覆盖船舶工程、前端开发、工具脚本与数据可视化</p></div>
-  <div class="portfolio-filters reveal">
+  <div class="portfolio-filters reveal reveal-delay-1">
     <button class="filter-btn active" data-filter="all" aria-pressed="true">全部</button>
     <button class="filter-btn" data-filter="ship" aria-pressed="false">船舶工程</button>
     <button class="filter-btn" data-filter="web" aria-pressed="false">前端开发</button>
@@ -296,7 +296,7 @@ a{color:inherit;text-decoration:none}button{font-family:inherit;cursor:pointer;b
 </section>
 <section class="section" id="blog" aria-labelledby="blog-title">
   <div class="section-header reveal"><p class="section-label">// 博客</p><h2 class="section-title" id="blog-title">思考与记录</h2><p class="section-desc">技术笔记、项目复盘与行业观察</p></div>
-  <div class="blog-grid reveal">
+  <div class="blog-grid reveal reveal-delay-1">
     <article class="blog-card glass" onclick="openBlogModal(0)" role="button" tabindex="0" onkeydown="if(event.key==='Enter')openBlogModal(0)"><p class="blog-date">2026.08.15</p><h3 class="blog-title">深入理解 CSS 容器查询：响应式设计的未来</h3><p class="blog-excerpt">CSS 容器查询让组件能够根据父容器尺寸而非视口尺寸做出响应式调整，标志着响应式设计从页面级走向组件级的范式转变。</p></article>
     <article class="blog-card glass" onclick="openBlogModal(1)" role="button" tabindex="0" onkeydown="if(event.key==='Enter')openBlogModal(1)"><p class="blog-date">2026.07.22</p><h3 class="blog-title">WebAssembly 在浏览器端的实战探索</h3><p class="blog-excerpt">当 JavaScript 遇上 WebAssembly，性能瓶颈有了新解法。本文分享将图像处理算法迁移至 Wasm 的实践与踩坑记录。</p></article>
     <article class="blog-card glass" onclick="openBlogModal(2)" role="button" tabindex="0" onkeydown="if(event.key==='Enter')openBlogModal(2)"><p class="blog-date">2026.06.10</p><h3 class="blog-title">设计系统的构建哲学：从 0 到 1 的决策过程</h3><p class="blog-excerpt">一个好的设计系统不是组件堆砌，而是设计语言的一致表达。分享我在构建组件库时的核心决策框架与取舍原则。</p></article>
@@ -304,7 +304,7 @@ a{color:inherit;text-decoration:none}button{font-family:inherit;cursor:pointer;b
 </section>
 <section class="section" id="timeline" aria-labelledby="timeline-title">
   <div class="section-header reveal"><p class="section-label">// 履历</p><h2 class="section-title" id="timeline-title">成长路径</h2><p class="section-desc">每一步都是积累，每一程都有收获</p></div>
-  <div class="timeline reveal">
+  <div class="timeline reveal reveal-delay-1">
     <div class="timeline-item">
       <div class="timeline-content"><p class="timeline-year">2024 — 至今</p><h3 class="timeline-role">船舶与海洋工程</h3><p class="timeline-org">武汉理工大学</p><p class="timeline-desc">系统学习船舶结构力学与破损稳性理论，参与科创项目"智海游灵"，探索智能船舶系统设计。</p></div>
       <div class="timeline-spacer"></div>
@@ -320,7 +320,7 @@ a{color:inherit;text-decoration:none}button{font-family:inherit;cursor:pointer;b
   </div>
 </section><section class="section" id="tools" aria-labelledby="tools-title">
   <div class="section-header reveal"><p class="section-label">// 工具面板</p><h2 class="section-title" id="tools-title">实用小工具</h2><p class="section-desc">随手可用的效率工具，数据存储在本地</p></div>
-  <div class="tools-grid reveal">
+  <div class="tools-grid reveal reveal-delay-1">
     <div class="tool-panel glass">
       <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="13.5" cy="6.5" r="2.5"/><path d="M17 2H7a5 5 0 0 0 0 10h4"/><path d="M17 12a5 5 0 0 1 0 10H7"/></svg>颜色拾取器</h3>
       <canvas class="color-picker-area" id="colorPicker" width="400" height="120" aria-label="颜色选择区域"></canvas>
@@ -357,7 +357,7 @@ a{color:inherit;text-decoration:none}button{font-family:inherit;cursor:pointer;b
 </section>
 <section class="section" id="contact" aria-labelledby="contact-title">
   <div class="section-header reveal"><p class="section-label">// 联系</p><h2 class="section-title" id="contact-title">开始对话</h2><p class="section-desc">有想法？一起聊聊</p></div>
-  <div class="contact-grid reveal">
+  <div class="contact-grid reveal reveal-delay-1">
     <div class="contact-info">
       <h3>让我们一起创造些什么</h3>
       <p>无论是项目合作、技术交流还是随便聊聊，都欢迎联系我。我通常会在 24 小时内回复。</p>
