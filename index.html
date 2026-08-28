@@ -8,10 +8,13 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-<style>
+<style>.scroll-progress{position:fixed;top:0;left:0;height:2px;background:var(--accent-gradient);z-index:1001;transition:width .1s linear;width:0}
+.back-to-top{position:fixed;bottom:2rem;right:2rem;width:44px;height:44px;border-radius:50%;background:var(--accent-gradient);color:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer;opacity:0;transform:translateY(20px);transition:all var(--transition-fast);z-index:999;box-shadow:0 4px 20px var(--glow-blue);border:none}
+.back-to-top.visible{opacity:1;transform:translateY(0)}
+.back-to-top:hover{transform:translateY(-2px);box-shadow:0 8px 30px var(--glow-violet)}
 :root{--bg-deep:#0a0e1a;--bg-secondary:#111827;--accent-blue:#4f8ef7;--accent-violet:#8b5cf6;--accent-gradient:linear-gradient(135deg,#4f8ef7 0%,#8b5cf6 100%);--text-primary:#f0f4ff;--text-secondary:#c7d2ee;--text-muted:#7a8bb5;--glass-bg:rgba(20,27,50,.55);--glass-border:rgba(255,255,255,.08);--glass-highlight:rgba(255,255,255,.15);--glow-blue:rgba(79,142,247,.3);--glow-violet:rgba(139,92,246,.3);--font-display:"Space Grotesk",sans-serif;--font-body:"Inter",sans-serif;--font-code:"JetBrains Mono",monospace;--space-xs:.5rem;--space-sm:1rem;--space-md:2rem;--space-lg:4rem;--space-xl:6rem;--radius-sm:8px;--radius-md:16px;--radius-lg:24px;--radius-full:9999px;--transition-fast:150ms cubic-bezier(.4,0,.2,1);--transition-smooth:300ms cubic-bezier(.4,0,.2,1);--bg-card:rgba(255,255,255,.04)}
 [data-theme="light"]{--bg-deep:#f8fafc;--bg-secondary:#f1f5f9;--accent-blue:#2563eb;--accent-violet:#7c3aed;--accent-gradient:linear-gradient(135deg,#2563eb 0%,#7c3aed 100%);--text-primary:#0f172a;--text-secondary:#334155;--text-muted:#64748b;--glass-bg:rgba(255,255,255,.7);--glass-border:rgba(0,0,0,.06);--glass-highlight:rgba(255,255,255,.9);--glow-blue:rgba(37,99,235,.15);--glow-violet:rgba(124,58,237,.15);--bg-card:rgba(0,0,0,.03)}
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}body{scroll-padding-top:80px}
 body{font-family:var(--font-body);background:var(--bg-deep);color:var(--text-primary);line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased;transition:background var(--transition-smooth),color var(--transition-smooth)}
 a{color:inherit;text-decoration:none}button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit}img,svg{display:block;max-width:100%}ul,ol{list-style:none}
 :focus-visible{outline:2px solid var(--accent-blue);outline-offset:2px;border-radius:4px}
@@ -89,7 +92,9 @@ a{color:inherit;text-decoration:none}button{font-family:inherit;cursor:pointer;b
 .project-card{border-radius:var(--radius-md);overflow:hidden;cursor:pointer;transition:transform var(--transition-smooth),box-shadow var(--transition-smooth);position:relative}
 .project-card:hover{transform:translateY(-8px);box-shadow:0 20px 60px rgba(0,0,0,.4),0 0 40px var(--glow-violet)}
 .project-thumb{height:200px;position:relative;overflow:hidden}
-.project-thumb img{width:100%;height:100%;object-fit:cover;transition:transform .6s cubic-bezier(.4,0,.2,1)}
+.project-thumb img{background:linear-gradient(135deg,var(--accent-blue),var(--accent-violet));min-height:200px}
+.project-thumb img:not([src]),.project-thumb img[src=""],.project-thumb img.error-img{opacity:0}
+.project-thumb::before{content:"";position:absolute;inset:0;background:linear-gradient(135deg,var(--accent-blue),var(--accent-violet));z-index:-1}\n.project-thumb img{width:100%;height:100%;object-fit:cover;transition:transform .6s cubic-bezier(.4,0,.2,1)}
 .project-card:hover .project-thumb img{transform:scale(1.05)}
 .project-thumb-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(10,14,26,.9) 0%,transparent 60%);display:flex;align-items:flex-end;padding:var(--space-sm)}
 .project-tags{display:flex;gap:.375rem;flex-wrap:wrap}
@@ -171,7 +176,7 @@ a{color:inherit;text-decoration:none}button{font-family:inherit;cursor:pointer;b
 @media(max-width:767px){.nav-links{display:none}.nav-menu-btn{display:flex}.nav-links.open{display:flex;flex-direction:column;position:fixed;inset:0;background:rgba(10,14,26,.95);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);justify-content:center;align-items:center;gap:var(--space-md);z-index:999}.nav-links.open a{font-size:1.25rem}.tools-grid{grid-template-columns:1fr}.portfolio-grid,.blog-grid{grid-template-columns:1fr}.hero-title{font-size:clamp(2rem,8vw,2.5rem)}}
 </style>
 </head>
-<body><nav class="nav" id="nav" role="navigation" aria-label="主导航">
+<body><div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div><button class="back-to-top" id="backToTop" aria-label="返回顶部"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg></button><nav class="nav" id="nav" role="navigation" aria-label="主导航">
   <div class="nav-inner glass-strong">
     <a href="#hero" class="nav-logo" aria-label="首页">ZHAO</a>
     <div class="nav-links" id="navLinks" role="menubar">
@@ -437,9 +442,25 @@ renderSnips();
 const form=document.getElementById('contactForm');
 if(form){form.addEventListener('submit',function(e){e.preventDefault();const btn=this.querySelector('.form-submit');btn.textContent='发送中...';btn.disabled=true;setTimeout(function(){btn.textContent='已发送 ✓';btn.style.background='linear-gradient(135deg,#10b981 0%,#059669 100%)';setTimeout(function(){btn.textContent='发送消息';btn.style.background='';btn.disabled=false;form.reset();},2000);},1000);});}
 })();
-</script>
+
+// SCROLL PROGRESS & BACK TO TOP
+(function(){var bar=document.getElementById('scrollProgress'),btn=document.getElementById('backToTop');
+if(bar){window.addEventListener('scroll',function(){var pct=(document.documentElement.scrollTop/(document.documentElement.scrollHeight-document.documentElement.clientHeight))*100;bar.style.width=pct+'%';},{passive:true});}
+if(btn){window.addEventListener('scroll',function(){btn.classList.toggle('visible',window.scrollY>400);},{passive:true});btn.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'});});}
+})()
+// IMAGE FALLBACK
+document.querySelectorAll('.project-thumb img').forEach(function(img){img.addEventListener('error',function(){this.style.opacity='0';this.parentElement.style.background='linear-gradient(135deg,rgba(79,142,247,.3),rgba(139,92,246,.3))';});});</script>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
 
 
 
